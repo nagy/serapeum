@@ -170,8 +170,8 @@ Return the total."
         `(the number
               (let ((,n ,zero))
                 (declare (number ,n))
-                (flet ((,sum (,x)
-                         (incf ,n ,x)))
+                (flet ((,sum (&optional ,x)
+                         (if ,x (incf ,n ,x) ,n)))
                   (declare (ignorable (function ,sum)))
                   ,@body)
                 ,n))))))
